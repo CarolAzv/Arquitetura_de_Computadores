@@ -1,0 +1,48 @@
+.text
+main: addi $2, $0 5
+      syscall
+      add $8, $0, $2     
+      
+#div 400
+      addi $9, $0, 400
+      div $8, $9
+      mfhi $10 #se 0 então é bisesto
+      
+      sub $15, $0, $11
+      not $15, $15
+      srl $15, $15, 31
+      
+#div 4
+      addi $9, $0, 4
+      div $8, $9
+      mfhi $11 #se 0 então talvez bissexto
+      
+      sub $16, $0, $11
+      not $16, $16
+      srl $16, $16, 31
+      
+#div 100
+      addi $9, $0, 100
+      div $8, $9
+      mfhi $12 #se 0 então não é bissexto
+      
+      sub $17, $0, $12
+      srl $17, $17, 31
+      
+      
+      
+# se $10 ser 0
+#    ou
+# se $11 ser 0 e $12 não é zero
+      
+# se $15 ser 1
+#    ou
+# se $16 ser 1 e $17 ser zero
+
+      and $18, $16, $17
+      or $4, $15, $18
+      addi $2, $0, 1
+      syscall
+      
+      addi $2, $0 10
+      syscall
