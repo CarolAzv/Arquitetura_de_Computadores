@@ -1,0 +1,22 @@
+.text
+main:  addi $20, $0, 0 #soma
+       addi $10 $0, 10 #limite superior for for
+       addi $9, $0, 0 #i = 0
+      
+teste: beq $9, $10, fimfor
+
+       addi $2, $0, 5
+       syscall
+       add $20, $20, $2
+       
+       addi $9, $9, 1 #I = I + 1
+       j teste
+            
+fimfor: add $4, $0, $20
+
+imp:  addi $2, $0, 1
+      syscall
+      
+      addi $2, $0, 10
+      syscall
+      
