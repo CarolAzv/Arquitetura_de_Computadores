@@ -7,7 +7,7 @@ main: addi $2, $0, 5
       syscall
       add $9, $0, $2 # tempo de serviso
       
-      #condições
+      #condiÃ§Ãµes
       add $10, $0, 65 # ter, ao menos, 65 anos
       add $11, $0, 40 #ter trabalhado 40 anos
       add $12, $0, 60 #ter pelo menos 60 anos e...
