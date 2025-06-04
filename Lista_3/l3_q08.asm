@@ -8,10 +8,10 @@ loop:  addi $2, $0, 5
        syscall
        add $10, $0, $2
       
+      beq $10, $0, fim
+      
        blt $10, $8, menor
        bgt $10, $9, maior
-       
-       beq $10, $0, fim
        
        j loop
        
