@@ -21,7 +21,7 @@ test:   beq $10, $0, fim
        
         addi $10, $10, -1
         j test
-fim:    ori $9, $0, 0xffff
+fim:    ori $9, $0, 0xffff ###
         sll $9, $9, 8
         ori $9, $9, 0x00ff
        
