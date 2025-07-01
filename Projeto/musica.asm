@@ -1,8 +1,8 @@
 .text
 main: addi $a1 $0, 5000 #tempo
-      addi $a2 $0, 0 #instrumento 1-7 pianos/ guitara/ 74-79 sopro/
+      addi $a2 $0, 0 #instrumento 1-7 pianos/ 24-31 guitara/ 74-79 sopro/
       addi $a3 $0, 65 #volume
-      addi $a0 $0, 60 #nota (dó)
+      addi $a0 $0, 60 #nota (dÃ³)
       addi $v0 $0, 31 #syscall
       syscall
       
@@ -21,4 +21,4 @@ main: addi $a1 $0, 5000 #tempo
 fim:  addi $v0, $0, 10
       syscall
       
-#syscall 32 é um delay
+#syscall 32 Ã© um delay
