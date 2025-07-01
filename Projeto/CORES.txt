@@ -1,0 +1,15 @@
+CORES
+	lui $8,0x00ff # Branco
+	ori $8,$8,0xffff
+	
+	lui $9,0x0000 # Preto
+	ori $9,$9,0x0000
+	
+	lui $10,0x00ff # Vermelho
+	ori $10,$10,0x0000
+	
+	lui $11,0x00D9 # Amarelo
+	ori $11,$11,0xE229
+	
+	lui $12,0x00E9 # cor do peito
+	ori $12,$12,0xAA88
