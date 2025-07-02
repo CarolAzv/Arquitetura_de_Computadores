@@ -30,15 +30,15 @@ notas:  .word 60, 62, 64, 65, 67, 69, 71, 72  # escala de notas
 
 .text
 main:
-    la $t0, notas       # endereÃ§o da lista de notas
-    addi $t1 $0 8           # nÃºmero de notas na lista
-    addi $t2 $0 0           # Ã­ndice do loop
+    la $t0, notas       # endereço da lista de notas
+    addi $t1 $0 8           # número de notas na lista
+    addi $t2 $0 0           # índice do loop
 
 loop:
-    beq $t2, $t1, fim   # se Ã­ndice == nÃºmero de notas, fim do loop
+    beq $t2, $t1, fim   # se índice == número de notas, fim do loop
 
     lw $a0, 0($t0)      # carrega a nota atual
-    addi $a1 $0 5000        # duraÃ§Ã£o da nota
+    addi $a1 $0 5000        # duração da nota
     addi $a2 $0 0           # instrumento
     addi $a3 $0 65          # volume
     addi $v0 $0 31          # syscall para tocar nota
@@ -46,11 +46,11 @@ loop:
 
     # pausa entre notas
     addi $v0, 32          # syscall pausa
-    lw $a0, 5000 # duraÃ§Ã£o da pausa
+    lw $a0, 5000 # duração da pausa
     syscall
 
-    addi $t0, $t0, 4    # prÃ³ximo endereÃ§o da nota
-    addi $t2, $t2, 1    # prÃ³ximo Ã­ndice
+    addi $t0, $t0, 4    # próximo endereço da nota
+    addi $t2, $t2, 1    # próximo índice
     j loop
 
 fim:
