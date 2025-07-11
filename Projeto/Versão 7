@@ -9,6 +9,7 @@ main:
 	jal obstaculos
 #	jal passaro
 	jal porco1
+	jal porco2
 	
 	addi $2,$0,10
 	syscall
@@ -1454,39 +1455,39 @@ obstaculos:
 	
 	# Primeira coluna
 	lui $8, 0x1001 # endereço começo
-	ori $8, $8, 0x5774
+	ori $8, $8, 0x6758
 	lui $9, 0x1001 # endereço final
-	ori $9, $9, 0x6574
+	ori $9, $9, 0x6F58
 	
 	# Segunda coluna
 	lui $10, 0x1001 # endereço começo
-	ori $10, $10, 0x5794
+	ori $10, $10, 0x6770
 	lui $11, 0x1001 # endereço final
-	ori $11, $11, 0x6594
+	ori $11, $11, 0x6F70
 	
 	# Terceira coluna
 	lui $12, 0x1001 # endereço começo
-	ori $12, $12, 0x6970
+	ori $12, $12, 0x5D8C
 	lui $13, 0x1001 # endereço final
-	ori $13, $13, 0x6f70
+	ori $13, $13, 0x6F8C
 	
 	# Quarta coluna
 	lui $14, 0x1001 # endereço começo
-	ori $14, $14, 0x6998
+	ori $14, $14, 0x5DA4
 	lui $15, 0x1001 # endereço final
-	ori $15, $15, 0x6F98
+	ori $15, $15, 0x6FA4
 	
 	# Primeira linha
 	lui $16, 0x1001 # endereço começo
-	ori $16, $16, 0x556C
+	ori $16, $16, 0x6550
 	lui $17, 0x1001 # endereço final
-	ori $17, $17, 0x559C
+	ori $17, $17, 0x6578
 	
 	# Segunda linha
 	lui $18, 0x1001 # endereço começo
-	ori $18, $18, 0x6770
+	ori $18, $18, 0x5B84
 	lui $19, 0x1001 # endereço final
-	ori $19, $19, 0x6798
+	ori $19, $19, 0x5BAC
 	
 	lui $20, 0x007c #cor marrom dos obstaculos
 	ori $20, $20, 0x542a
@@ -1759,8 +1760,6 @@ set:
 	jr $31
 	
 	
-	
-	
 #-------------------------Primeiro Porco---------------------
 # TEM QUE SALVAR O FUNDO PARA FAZER QUALQUER TIPO DE ANIMAÇÃO!!!!!!!
 porco1: #CORES
@@ -1779,19 +1778,19 @@ porco1: #CORES
 	
 	# Primeira linha
 	lui $13, 0x1001 # endereço começo
-	ori $13, $13, 0x4F60
+	ori $13, $13, 0x4F5C
 	lui $14, 0x1001 # endereço final
-	ori $14, $14, 0x4F6C
+	ori $14, $14, 0x4F68
 	
 	# Segunda linha
 	lui $15, 0x1001 # endereço começo
-	ori $15, $15, 0x5158
+	ori $15, $15, 0x5154
 	lui $16, 0x1001 # endereço final
-	ori $16, $16, 0x5174
+	ori $16, $16, 0x5170
 	lui $17, 0x1001 # endereço começo cinza
-	ori $17, $17, 0x5160
+	ori $17, $17, 0x515C
 	lui $18, 0x1001 # endereço final
-	ori $18, $18, 0x516C
+	ori $18, $18, 0x5168
 	
 p1_l1:  sw $9, 0($13)
 	addi $13, $13, 4
@@ -1805,27 +1804,27 @@ p1_l2_2:sw $11, 0($17)
 	
 	# Terceira linha
 	lui $13, 0x1001 # endereço começo
-	ori $13, $13, 0x5354
+	ori $13, $13, 0x5350
 	lui $14, 0x1001 # endereço final
-	ori $14, $14, 0x5378
+	ori $14, $14, 0x5374
 	lui $15, 0x1001 # endereço começo cinza
-	ori $15, $15, 0x5358
+	ori $15, $15, 0x5354
 	lui $16, 0x1001 # endereço final
-	ori $16, $16, 0x5374
+	ori $16, $16, 0x5370
 	
 	# Quarta linha
 	lui $17, 0x1001 # endereço começo
-	ori $17, $17, 0x5554
+	ori $17, $17, 0x5550
 	lui $18, 0x1001 # endereço final
-	ori $18, $18, 0x5578
+	ori $18, $18, 0x5574
 	lui $19, 0x1001 # endereço começo cinza
-	ori $19, $19, 0x5558
+	ori $19, $19, 0x5554
 	lui $20, 0x1001 # endereço final
-	ori $20, $20, 0x555C
+	ori $20, $20, 0x5558
 	lui $21, 0x1001 # endereço começo
-	ori $21, $21, 0x5570
-	lui $22, 0x100 # endereço final
-	ori $22, $22, 0x5574
+	ori $21, $21, 0x556C
+	lui $22, 0x1001 # endereço final
+	ori $22, $22, 0x5570
 	
 p1_l3_1:sw $9, 0($13)
 	addi $13, $13, 4
@@ -1845,23 +1844,23 @@ p1_l4_3:sw $11, 0($21)
 	
 	# Quinta linha
 	lui $12, 0x1001 # endereço começo preto
-	ori $12, $12, 0x5758
+	ori $12, $12, 0x5754
 	lui $13, 0x1001 # endereço final
-	ori $13, $13, 0x5774
+	ori $13, $13, 0x5770
 	lui $14, 0x1001 # endereço começo verde 1
-	ori $14, $14, 0x5760
+	ori $14, $14, 0x575C
 	lui $15, 0x1001 # endereço final
-	ori $15, $15, 0x576C
+	ori $15, $15, 0x5768
 	
 	# Sexta linha
 	lui $16, 0x1001 # endereço começo branco
-	ori $16, $16, 0x5958
+	ori $16, $16, 0x5954
 	lui $17, 0x1001 # endereço final
-	ori $17, $17, 0x5974
+	ori $17, $17, 0x5970
 	lui $18, 0x1001 # endereço começo verde 1
-	ori $18, $18, 0x5960
+	ori $18, $18, 0x595C
 	lui $19, 0x1001 # endereço final
-	ori $19, $19, 0x596C
+	ori $19, $19, 0x5968
 	
 p1_l5_1:sw $9, 0($12)
 	addi $12, $12, 4
@@ -1878,31 +1877,31 @@ p1_l6_2:sw $10, 0($18)
 	
 	# Setima linha
 	lui $12, 0x1001 # endereço começo Preto
-	ori $12, $12, 0x5B58
+	ori $12, $12, 0x5B54
 	lui $13, 0x1001 # endereço final
-	ori $13, $13, 0x5B74
+	ori $13, $13, 0x5B70
 	lui $14, 0x1001 # endereço começo Branco
-	ori $14, $14, 0x5B5C
+	ori $14, $14, 0x5B58
 	lui $15, 0x1001 # endereço final
-	ori $15, $15, 0x5B70
+	ori $15, $15, 0x5B6C
 	lui $16, 0x1001 # endereço começo Verde 1
-	ori $16, $16, 0x5B60
+	ori $16, $16, 0x5B5C
 	lui $17, 0x1001 # endereço final
-	ori $17, $17, 0x5B6C
+	ori $17, $17, 0x5B68
 	
 	# Oitava linha
 	lui $18, 0x1001 # endereço começo Preto
-	ori $18, $18, 0x5D54
+	ori $18, $18, 0x5D50
 	lui $19, 0x1001 # endereço final
-	ori $19, $19, 0x5D78
+	ori $19, $19, 0x5D74
 	lui $20, 0x1001 # endereço começo Verde 1
-	ori $20, $20, 0x5D58
+	ori $20, $20, 0x5D54
 	lui $21, 0x1001 # endereço fim
-	ori $21, $21, 0x5D74
+	ori $21, $21, 0x5D70
 	lui $22, 0x1001 # endereço começo Verde 2
-	ori $22, $22, 0x5D60
+	ori $22, $22, 0x5D5C
 	lui $23, 0x1001 # endereço fim
-	ori $23, $23, 0x5D6C
+	ori $23, $23, 0x5D68
 	lui $11,0x0022 # Verde 2
 	ori $11,$11,0xb14c
 	
@@ -1922,16 +1921,333 @@ p1_l8_2:sw $10, 0($20)
 	addi $20, $20, 4
 	ble $20, $21, p1_l8_2
 p1_l8_3:sw $11, 0($22)
-	addi $22, 
+	addi $22, $22, 4
+	ble $22, $23, p1_l8_3
 	
-	#lui $8,0x00ff # Branco
-	#ori $8,$8,0xffff
+	# Nona linha
+	lui $12, 0x1001 # endereço começo Preto
+	ori $12, $12, 0x5F50
+	lui $13, 0x1001 # endereço final
+	ori $13, $13, 0x5F74
+	lui $14, 0x1001 # endereço começo Verde 1
+	ori $14, $14, 0x5F54
+	lui $15, 0x1001 # endereço final
+	ori $15, $15, 0x5F70
+	lui $16, 0x1001 # endereço começo Verde 2
+	ori $16, $16, 0x5F5C
+	lui $17, 0x1001 # endereço final
+	ori $17, $17, 0x5F68
 	
-	#lui $9,0x0000 # Preto
-	#ori $9,$9,0x0000
+	# Decima linha
+	lui $18, 0x1001 # endereço começo Preto
+	ori $18, $18, 0x6154
+	lui $19, 0x1001 # endereço final
+	ori $19, $19, 0x6170
+	lui $20, 0x1001 # endereço começo Verde 1
+	ori $20, $20, 0x615C
+	lui $21, 0x1001 # endereço fim
+	ori $21, $21, 0x6168
 	
-	#lui $10,0x00a8 # Verde 1
-	#ori $10,$10,0xe61d
+	# Decima Primeira linha
+	lui $22, 0x1001 # endereço começo preto
+	ori $22, $22, 0x635C
+	lui $23, 0x1001 # endereço fim
+	ori $23, $23, 0x6368
 	
-	#lui $11,0x0022 # Verde 2
-	#ori $11,$11,0xb14c
+p1_l9_1:sw $9, 0($12)
+	addi $12, $12, 4
+	ble $12, $13, p1_l9_1
+p1_l9_2:sw $10, 0($14)
+	addi $14, $14, 4
+	ble $14, $15, p1_l9_2
+p1_l9_3:sw $11, 0($16)
+	addi $16, $16, 4
+	ble $16, $17, p1_l9_3
+p1_l10_1:sw $9, 0($18)
+	addi $18, $18, 4
+	ble $18, $19, p1_l10_1
+p1_l10_2:sw $10, 0($20)
+	addi $20, $20, 4
+	ble $20, $21, p1_l10_2
+p1_l11_1:sw $9, 0($22)
+	addi $22, $22, 4
+	ble $22, $23, p1_l11_1
+	
+	# Primeira coluna
+	lui $12, 0x1001 # endereço começo marrom
+	ori $12, $12, 0x5750
+	lui $13, 0x1001 # endereço fim
+	ori $13, $13, 0x5B50
+	
+	# Segunda coluna
+	lui $14, 0x1001 # endereço começo marrom
+	ori $14, $14, 0x5774
+	lui $15, 0x1001 # endereço fim
+	ori $15, $15, 0x5B74
+	
+	# Ponto verde 3
+	lui $16, 0x1001 # endereço começo e fim verde 3
+	ori $16, $16, 0x5F60
+	lui $17, 0x1001
+	ori $17, $17, 0x5F60
+	
+	lui $10,0x009c # Marrom
+	ori $10,$10,0xe5a3c
+	
+	lui $11,0x001c # Verde 3
+	ori $11,$11,0x8c3c
+	
+p1_c1:  sw $10, 0($12)
+	addi $12, $12, 512
+	ble $12, $13, p1_c1
+p1_c2:  sw $10, 0($14)
+	addi $14, $14, 512
+	ble $14, $15, p1_c2
+p1_p:   sw $11, 0($16)
+	addi $16, $16, 4
+	ble $16, $17, p1_p
+
+	jr $31
+
+#-------------------------Segundo Porco---------------------
+# TEM QUE SALVAR O FUNDO PARA FAZER QUALQUER TIPO DE ANIMAÇÃO!!!!!!!
+porco2: #CORES
+	lui $8,0x00ff # Branco
+	ori $8,$8,0xffff
+	
+	lui $9,0x0000 # Preto
+	ori $9,$9,0x0000
+	
+	lui $10,0x00a8 # Verde 1
+	ori $10,$10,0xe61d
+	
+	lui $11,0x0022 # Verde 2
+	ori $11,$11,0xb14c
+	
+	
+	# Primeira linha
+	lui $13, 0x1001 # endereço começo Preto
+	ori $13, $13, 0x479C
+	lui $14, 0x1001 # endereço final
+	ori $14, $14, 0x47A4
+	
+	# Segunda linha
+	lui $15, 0x1001 # endereço começo Preto
+	ori $15, $15, 0x4984
+	lui $16, 0x1001 # endereço final
+	ori $16, $16, 0x498C
+	lui $17, 0x1001 # endereço começo Preto
+	ori $17, $17, 0x4998
+	lui $18, 0x1001 # endereço final
+	ori $18, $18, 0x49A8
+	lui $19, 0x1001 # endereço começo Verde 1
+	ori $19, $19, 0x499C
+	lui $20, 0x1001 # endereço final
+	ori $20, $20, 0x49A4
+	
+p2_l1:  sw $9, 0($13)
+	addi $13, $13, 4
+	ble $13, $14, p2_l1
+p2_l2_1:sw $9, 0($15)
+	addi $15, $15, 4
+	ble $15, $16, p2_l2_1
+p2_l2_2:sw $9, 0($17)
+	addi $17, $17, 4
+	ble $17, $18, p2_l2_2
+p2_l2_3:sw $10, 0($19)
+	addi $19, $19, 4
+	ble $19, $20, p2_l2_3
+	
+	# Terceira linha
+	lui $13, 0x1001 # endereço começo Preto
+	ori $13, $13, 0x4B80
+	lui $14, 0x1001 # endereço final
+	ori $14, $14, 0x4BA8
+	lui $15, 0x1001 # endereço começo Verde 1
+	ori $15, $15, 0x4B84
+	lui $16, 0x1001 # endereço final
+	ori $16, $16, 0x4B8C
+	lui $17, 0x1001 # endereço começo Verde 1
+	ori $17, $17, 0x4B9C
+	lui $18, 0x1001 # endereço final
+	ori $18, $18, 0x4BA4
+	
+	# Quarta linha
+	lui $19, 0x1001 # endereço começo Preto
+	ori $19, $19, 0x4D80
+	lui $20, 0x1001 # endereço final
+	ori $20, $20, 0x4DA8
+	lui $21, 0x1001 # endereço começo Verde 1
+	ori $21, $21, 0x4D84
+	lui $22, 0x1001 # endereço final
+	ori $22, $22, 0x4DA4
+	
+p2_l3_1:sw $9, 0($13)
+	addi $13, $13, 4
+	ble $13, $14, p2_l3_1
+p2_l3_2:sw $10, 0($15)
+	addi $15, $15, 4
+	ble $15, $16, p2_l3_2
+p2_l3_3:sw $10, 0($17)
+	addi $17, $17, 4
+	ble $17, $18, p2_l3_3
+p2_l4_1:sw $9, 0($19)
+	addi $19, $19, 4
+	ble $19, $20, p2_l4_1
+p2_l4_2:sw $10, 0($21)
+	addi $21, $21, 4
+	ble $21, $22, p2_l4_2
+	
+	# Quinta linha
+	lui $12, 0x1001 # endereço começo preto
+	ori $12, $12, 0x4F84
+	lui $13, 0x1001 # endereço final
+	ori $13, $13, 0x4FA8
+	lui $14, 0x1001 # endereço começo Branco
+	ori $14, $14, 0x4F88
+	lui $15, 0x1001 # endereço final
+	ori $15, $15, 0x4FA4
+	lui $16, 0x1001 # endereço começo Verde 1
+	ori $16, $16, 0x4F90
+	lui $17, 0x1001 # endereço final
+	ori $17, $17, 0x4F9C
+	
+	# Sexta linha
+	lui $18, 0x1001 # endereço começo Preto
+	ori $18, $18, 0x5184
+	lui $19, 0x1001 # endereço final
+	ori $19, $19, 0x51A8
+	lui $20, 0x1001 # endereço começo Branco
+	ori $20, $20, 0x518C
+	lui $21, 0x1001 # endereço final
+	ori $21, $21, 0x51A0
+	lui $22, 0x1001 # endereço começo verde 1
+	ori $22, $22, 0x5190
+	lui $23, 0x1001 # endereço final
+	ori $23, $23, 0x519C
+	
+p2_l5_1:sw $9, 0($12)
+	addi $12, $12, 4
+	ble $12, $13, p2_l5_1
+p2_l5_2:sw $8, 0($14)
+	addi $14, $14, 4
+	ble $14, $15, p2_l5_2
+p2_l5_3:sw $10, 0($16)
+	addi $16, $16, 4
+	ble $16, $17, p2_l5_3
+p2_l6_1:sw $9, 0($18)
+	addi $18, $18, 4
+	ble $18, $19, p2_l6_1
+p2_l6_2:sw $8, 0($20)
+	addi $20, $20, 4
+	ble $20, $21, p2_l6_2
+p2_l6_3:sw $10, 0($22)
+	addi $22, $22, 4
+	ble $22, $23, p2_l6_3
+	
+	# Setima linha
+	lui $12, 0x1001 # endereço começo Preto
+	ori $12, $12, 0x5384
+	lui $13, 0x1001 # endereço final
+	ori $13, $13, 0x53A8
+	lui $14, 0x1001 # endereço começo Verde 1
+	ori $14, $14, 0x5388
+	lui $15, 0x1001 # endereço final
+	ori $15, $15, 0x53A4
+	lui $16, 0x1001 # endereço começo Verde 2
+	ori $16, $16, 0x5390
+	lui $17, 0x1001 # endereço final
+	ori $17, $17, 0x539C
+	
+	# Oitava linha
+	lui $18, 0x1001 # endereço começo Preto
+	ori $18, $18, 0x5584
+	lui $19, 0x1001 # endereço final
+	ori $19, $19, 0x55A8
+	lui $20, 0x1001 # endereço começo Verde 1
+	ori $20, $20, 0x5588
+	lui $21, 0x1001 # endereço fim
+	ori $21, $21, 0x55A4
+	lui $22, 0x1001 # endereço começo Verde 2
+	ori $22, $22, 0x5590
+	lui $23, 0x1001 # endereço fim
+	ori $23, $23, 0x559C
+	
+p2_l7_1:sw $9, 0($12)
+	addi $12, $12, 4
+	ble $12, $13, p2_l7_1
+p2_l7_2:sw $10, 0($14)
+	addi $14, $14, 4
+	ble $14, $15, p2_l7_2
+p2_l7_3:sw $11, 0($16)
+	addi $16, $16, 4
+	ble $16, $17, p2_l7_3
+p2_l8_1:sw $9, 0($18)
+	addi $18, $18, 4
+	ble $18, $19, p2_l8_1
+p2_l8_2:sw $10, 0($20)
+	addi $20, $20, 4
+	ble $20, $21, p2_l8_2
+p2_l8_3:sw $11, 0($22)
+	addi $22, $22, 4
+	ble $22, $23, p2_l8_3
+	
+	# Nona linha
+	lui $12, 0x1001 # endereço começo Preto
+	ori $12, $12, 0x5788
+	lui $13, 0x1001 # endereço final
+	ori $13, $13, 0x57A4
+	lui $14, 0x1001 # endereço começo Verde 1
+	ori $14, $14, 0x5790
+	lui $15, 0x1001 # endereço final
+	ori $15, $15, 0x579C
+	
+	# Decima linha
+	lui $16, 0x1001 # endereço começo Preto
+	ori $16, $16, 0x5990
+	lui $17, 0x1001 # endereço final
+	ori $17, $17, 0x599C
+	
+p2_l9_1:sw $9, 0($12)
+	addi $12, $12, 4
+	ble $12, $13, p2_l9_1
+p2_l9_2:sw $10, 0($14)
+	addi $14, $14, 4
+	ble $14, $15, p2_l9_2
+p2_l10_1:sw $9, 0($16)
+	addi $16, $16, 4
+	ble $16, $17, p2_l10_1
+	
+	# Ponto verde 2
+	lui $12, 0x1001 # endereço começo e fim verde 3
+	ori $12, $12, 0x4D8C
+	lui $13, 0x1001
+	ori $13, $13, 0x4D8C
+	
+	# Ponto verde 2
+	lui $14, 0x1001 # endereço começo e fim verde 3
+	ori $14, $14, 0x4BA0
+	lui $15, 0x1001
+	ori $15, $15, 0x4BA0
+	
+	# Ponto verde 3
+	lui $16, 0x1001 # endereço começo e fim verde 3
+	ori $16, $16, 0x5598
+	lui $17, 0x1001
+	ori $17, $17, 0x5598
+	
+	lui $10,0x001c # Verde 3
+	ori $10,$10,0x8c3c
+	
+p2_p1:  sw $11, 0($12)
+	addi $12, $12, 4
+	ble $12, $13, p2_p1
+p2_p2:  sw $11, 0($14)
+	addi $14, $14, 4
+	ble $14, $15, p2_p2
+p2_p3:  sw $10, 0($16)
+	addi $16, $16, 4
+	ble $16, $17, p2_p3
+	
+	jr $31
+	
