@@ -1,7 +1,6 @@
 .include "porcosAlt.asm"
 
 .text
-
 main:
 #PORCOHAT
     addi $5, $0, 10 # base do porco
@@ -15,10 +14,15 @@ main:
     addi $11, $0, 50 # y final. max 63 #0x10016374
 
 #PORCO
-    addi $12, $0, 96 # x inicial #0x10014780
-    addi $13, $0, 36 # y inicial
-    addi $14, $0, 107 # x final. max 127 #0x10014780
-    addi $15, $0, 45  # y final. max 63
+    addi $12, $0, 11 # base do porco
+    addi $13, $0, 10 # altura do porco
+    mul $14, $12, $13 # area do porco
+    addi $14, $14, 110 # area do porco hat + area do porco
+    addi $14, $14, 8192 # tamanho da tela + area dos porcos
+    addi $15, $0, 96 # x inicial #0x10014780
+    addi $15, $0, 36 # y inicial
+    addi $16, $0, 107 # x final. max 127 #0x10014780
+    addi $17, $0, 45  # y final. max 63
 
 #guardar cenario e nota na memoria
     add $16, $0, $7 # conf do endereco
@@ -34,7 +38,7 @@ main:
 # carregar personagem porcohat
 	addi $8 $0 111 # endereco do inicio do personagem na memoria
 	sll $8 $8 3 # 2 telas * 4 bits
-	mul $17 $22 $23 # linhas * colunas do desenho
+	mul $17 $5 $6 # linhas * colunas do desenho
 	sll $17 $17 2 
 	add $8 $8 $17
 	addi $8 $8 0x10010000 

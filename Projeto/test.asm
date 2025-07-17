@@ -8,7 +8,7 @@ main:
 	jal estilingue
 	jal obstaculos
 	jal passaro
-	jal porco1
+	jal PORCOHAT
 	jal porco2
 	jal movimento
 parou:  addi $2,$0,10
@@ -1868,253 +1868,37 @@ dezr:
 
 
 #-------------------------Primeiro Porco---------------------
-# TEM QUE SALVAR O FUNDO PARA FAZER QUALQUER TIPO DE ANIMAÇÃO!!!!!!!
-porco1: #CORES
-	lui $8,0x00ff # Branco
-	ori $8,$8,0xffff
+PORCOHAT
+    addi $5, $0, 10 # base do porco
+    addi $6, $0, 11 # altura do porco
+    mul $7, $5, $6 # area do porco
+    addi $7, $7, 110 # area do porco hat + area do porco
+    addi $7, $7, 8192 # tamanho da tela + area dos porcos
+    addi $8, $0, 84 # x inicial 
+    addi $9, $0, 40 # y inicial #0x10014F50
+    addi $10, $0, 94 # x final. max 127
+    addi $11, $0, 50 # y final. max 63 #0x10016374
+    
+# carregar personagem porcohat
+	addi $8 $0 111 # endereco do inicio do personagem na memoria
+	sll $8 $8 3 # 2 telas * 4 bits
+	mul $17 $5 $6 # linhas * colunas do desenho
+	sll $17 $17 2 
+	add $8 $8 $17
+	addi $8 $8 0x10010000 
+	add $9, $0, $22 # base (colunas do desenho)
+	add $10, $0, $23 # altura (linhas do desenho)
+	add $11, $0, $18 # x
+	add $12, $0, $19 # y
+	jal PorcoHat
 	
-	lui $9,0x0000 # Preto
-	ori $9,$9,0x0000
-	
-	lui $10,0x00a8 # Verde 1
-	ori $10,$10,0xe61d
-	
-	lui $11,0x00b7 # cinza
-	ori $11,$11,0xb7b7
-	
-	
-	# Primeira linha
-	lui $13, 0x1001 # endereço começo
-	ori $13, $13, 0x4F5C
-	lui $14, 0x1001 # endereço final
-	ori $14, $14, 0x4F68
-	
-	# Segunda linha
-	lui $15, 0x1001 # endereço começo
-	ori $15, $15, 0x5154
-	lui $16, 0x1001 # endereço final
-	ori $16, $16, 0x5170
-	lui $17, 0x1001 # endereço começo cinza
-	ori $17, $17, 0x515C
-	lui $18, 0x1001 # endereço final
-	ori $18, $18, 0x5168
-	
-p1_l1:  sw $9, 0($13)
-	addi $13, $13, 4
-	ble $13, $14, p1_l1
-p1_l2_1:sw $9, 0($15)
-	addi $15, $15, 4
-	ble $15, $16, p1_l2_1
-p1_l2_2:sw $11, 0($17)
-	addi $17, $17, 4
-	ble $17, $18, p1_l2_2
-	
-	# Terceira linha
-	lui $13, 0x1001 # endereço começo
-	ori $13, $13, 0x5350
-	lui $14, 0x1001 # endereço final
-	ori $14, $14, 0x5374
-	lui $15, 0x1001 # endereço começo cinza
-	ori $15, $15, 0x5354
-	lui $16, 0x1001 # endereço final
-	ori $16, $16, 0x5370
-	
-	# Quarta linha
-	lui $17, 0x1001 # endereço começo
-	ori $17, $17, 0x5550
-	lui $18, 0x1001 # endereço final
-	ori $18, $18, 0x5574
-	lui $19, 0x1001 # endereço começo cinza
-	ori $19, $19, 0x5554
-	lui $20, 0x1001 # endereço final
-	ori $20, $20, 0x5558
-	lui $21, 0x1001 # endereço começo
-	ori $21, $21, 0x556C
-	lui $22, 0x1001 # endereço final
-	ori $22, $22, 0x5570
-	
-p1_l3_1:sw $9, 0($13)
-	addi $13, $13, 4
-	ble $13, $14, p1_l3_1
-p1_l3_2:sw $11, 0($15)
-	addi $15, $15, 4
-	ble $15, $16, p1_l3_2
-p1_l4_1:sw $9, 0($17)
-	addi $17, $17, 4
-	ble $17, $18, p1_l4_1
-p1_l4_2:sw $11, 0($19)
-	addi $19, $19, 4
-	ble $19, $20, p1_l4_2
-p1_l4_3:sw $11, 0($21)
-	addi $21, $21, 4
-	ble $21, $22, p1_l4_3
-	
-	# Quinta linha
-	lui $12, 0x1001 # endereço começo preto
-	ori $12, $12, 0x5754
-	lui $13, 0x1001 # endereço final
-	ori $13, $13, 0x5770
-	lui $14, 0x1001 # endereço começo verde 1
-	ori $14, $14, 0x575C
-	lui $15, 0x1001 # endereço final
-	ori $15, $15, 0x5768
-	
-	# Sexta linha
-	lui $16, 0x1001 # endereço começo branco
-	ori $16, $16, 0x5954
-	lui $17, 0x1001 # endereço final
-	ori $17, $17, 0x5970
-	lui $18, 0x1001 # endereço começo verde 1
-	ori $18, $18, 0x595C
-	lui $19, 0x1001 # endereço final
-	ori $19, $19, 0x5968
-	
-p1_l5_1:sw $9, 0($12)
-	addi $12, $12, 4
-	ble $12, $13, p1_l5_1
-p1_l5_2:sw $10, 0($14)
-	addi $14, $14, 4
-	ble $14, $15, p1_l5_2
-p1_l6_1:sw $8, 0($16)
-	addi $16, $16, 4
-	ble $16, $17, p1_l6_1
-p1_l6_2:sw $10, 0($18)
-	addi $18, $18, 4
-	ble $18, $19, p1_l6_2
-	
-	# Setima linha
-	lui $12, 0x1001 # endereço começo Preto
-	ori $12, $12, 0x5B54
-	lui $13, 0x1001 # endereço final
-	ori $13, $13, 0x5B70
-	lui $14, 0x1001 # endereço começo Branco
-	ori $14, $14, 0x5B58
-	lui $15, 0x1001 # endereço final
-	ori $15, $15, 0x5B6C
-	lui $16, 0x1001 # endereço começo Verde 1
-	ori $16, $16, 0x5B5C
-	lui $17, 0x1001 # endereço final
-	ori $17, $17, 0x5B68
-	
-	# Oitava linha
-	lui $18, 0x1001 # endereço começo Preto
-	ori $18, $18, 0x5D50
-	lui $19, 0x1001 # endereço final
-	ori $19, $19, 0x5D74
-	lui $20, 0x1001 # endereço começo Verde 1
-	ori $20, $20, 0x5D54
-	lui $21, 0x1001 # endereço fim
-	ori $21, $21, 0x5D70
-	lui $22, 0x1001 # endereço começo Verde 2
-	ori $22, $22, 0x5D5C
-	lui $23, 0x1001 # endereço fim
-	ori $23, $23, 0x5D68
-	lui $11,0x0022 # Verde 2
-	ori $11,$11,0xb14c
-	
-p1_l7_1:sw $9, 0($12)
-	addi $12, $12, 4
-	ble $12, $13, p1_l7_1
-p1_l7_2:sw $8, 0($14)
-	addi $14, $14, 4
-	ble $14, $15, p1_l7_2
-p1_l7_3:sw $10, 0($16)
-	addi $16, $16, 4
-	ble $16, $17, p1_l7_3
-p1_l8_1:sw $9, 0($18)
-	addi $18, $18, 4
-	ble $18, $19, p1_l8_1
-p1_l8_2:sw $10, 0($20)
-	addi $20, $20, 4
-	ble $20, $21, p1_l8_2
-p1_l8_3:sw $11, 0($22)
-	addi $22, $22, 4
-	ble $22, $23, p1_l8_3
-	
-	# Nona linha
-	lui $12, 0x1001 # endereço começo Preto
-	ori $12, $12, 0x5F50
-	lui $13, 0x1001 # endereço final
-	ori $13, $13, 0x5F74
-	lui $14, 0x1001 # endereço começo Verde 1
-	ori $14, $14, 0x5F54
-	lui $15, 0x1001 # endereço final
-	ori $15, $15, 0x5F70
-	lui $16, 0x1001 # endereço começo Verde 2
-	ori $16, $16, 0x5F5C
-	lui $17, 0x1001 # endereço final
-	ori $17, $17, 0x5F68
-	
-	# Decima linha
-	lui $18, 0x1001 # endereço começo Preto
-	ori $18, $18, 0x6154
-	lui $19, 0x1001 # endereço final
-	ori $19, $19, 0x6170
-	lui $20, 0x1001 # endereço começo Verde 1
-	ori $20, $20, 0x615C
-	lui $21, 0x1001 # endereço fim
-	ori $21, $21, 0x6168
-	
-	# Decima Primeira linha
-	lui $22, 0x1001 # endereço começo preto
-	ori $22, $22, 0x635C
-	lui $23, 0x1001 # endereço fim
-	ori $23, $23, 0x6368
-	
-p1_l9_1:sw $9, 0($12)
-	addi $12, $12, 4
-	ble $12, $13, p1_l9_1
-p1_l9_2:sw $10, 0($14)
-	addi $14, $14, 4
-	ble $14, $15, p1_l9_2
-p1_l9_3:sw $11, 0($16)
-	addi $16, $16, 4
-	ble $16, $17, p1_l9_3
-p1_l10_1:sw $9, 0($18)
-	addi $18, $18, 4
-	ble $18, $19, p1_l10_1
-p1_l10_2:sw $10, 0($20)
-	addi $20, $20, 4
-	ble $20, $21, p1_l10_2
-p1_l11_1:sw $9, 0($22)
-	addi $22, $22, 4
-	ble $22, $23, p1_l11_1
-	
-	# Primeira coluna
-	lui $12, 0x1001 # endereço começo marrom
-	ori $12, $12, 0x5750
-	lui $13, 0x1001 # endereço fim
-	ori $13, $13, 0x5B50
-	
-	# Segunda coluna
-	lui $14, 0x1001 # endereço começo marrom
-	ori $14, $14, 0x5774
-	lui $15, 0x1001 # endereço fim
-	ori $15, $15, 0x5B74
-	
-	# Ponto verde 3
-	lui $16, 0x1001 # endereço começo e fim verde 3
-	ori $16, $16, 0x5F60
-	lui $17, 0x1001
-	ori $17, $17, 0x5F60
-	
-	lui $10,0x009c # Marrom
-	ori $10,$10,0xe5a3c
-	
-	lui $11,0x001c # Verde 3
-	ori $11,$11,0x8c3c
-	
-p1_c1:  sw $10, 0($12)
-	addi $12, $12, 512
-	ble $12, $13, p1_c1
-p1_c2:  sw $10, 0($14)
-	addi $14, $14, 512
-	ble $14, $15, p1_c2
-p1_p:   sw $11, 0($16)
-	addi $16, $16, 4
-	ble $16, $17, p1_p
-
-	jr $31
+PorcoHat:  
+        lui $15, 0x1001
+	sll $11, $11, 2
+        sll $12, $12, 9 
+        add $15, $15, $11
+        add $15, $15, $12 # posicao inicial a ser desenhada
+        add $13, $0, $9 # largura 
 
 #-------------------------Segundo Porco---------------------
 # TEM QUE SALVAR O FUNDO PARA FAZER QUALQUER TIPO DE ANIMAÇÃO!!!!!!!
@@ -2357,100 +2141,3 @@ p2_p3:  sw $10, 0($16)
 	ble $16, $17, p2_p3
 	
 	jr $31
-	
-#==================================================================================================
-# funcao movimento           
-
-movimento:
-	lui $28, 0xffff # $11 <= 0xffff0000
-	#CORES
-	lui $8,0x00ff # Branco
-	ori $8,$8,0xffff
-	
-	lui $9,0x0000 # Preto
-	ori $9,$9,0x0000
-	
-	lui $10,0x00ff # Vermelho
-	ori $10,$10,0x0000
-	
-	lui $11,0x00D9 # Amarelo
-	ori $11,$11,0xE229
-	
-	lui $12,0x00E9 # cor do peito
-	ori $12,$12,0xAA88
-	
-	lui $13,0x006F # Cor do fundo
-	ori $13,$13,0x66Eb
-	
-	#Decima linha
-	lui $14, 0x1001 # começo preto
-	ori $14, $14, 0x507C
-
-	lui $15,0x1001 
-	ori $15, $15, 0x567C # final preto
-
-	lui $16,0x1001
-	ori $16, $16, 0x587C #  amarelo
-
-cont:   j delay
-	lw $29, 0($28)
-        beq $29, $0, cont
-        lw $17, 4($28)
-        addi $18, $0, ' '
-        beq $17, $18, parou
-        addi $18, $0, 'W'
-        beq $17, $18, digW
-        addi $18, $0, 'S'
-        beq $17, $18, digS
-        addi $18, $0, 'A'
-        beq $17, $18, digA
-        addi $18, $0, 'D'
-        beq $17, $18, digD                        
-        j cont
-digS:
-sdezr:	
-	sw $9,512($14)
-	addi $14,$14,1024
-	ble $14,$15,sdezr
-	
-	sw $11,512($16)
-	
-	j cont
-digA:
-adezr:	
-	sw $9,-4($14)
-	addi $14,$14,512
-	ble $14,$15,adezr
-	
-	sw $11,-4($16)
-	
-	j cont
-digD:
-ddezr:	
-	sw $9,4($14)
-	addi $14,$14,512
-	ble $14,$15,ddezr
-	
-	sw $11,4($16)
-	
-	j cont 
-digW:
-wdezr:	
-	sw $9,-512($14)
-	addi $14,$14,512
-	ble $14,$15,wdezr
-	
-	sw $11,512($16)
-	
-	j cont
-	
-#===============================
-# funcao Delay                
-
-delay:  addi $24, $0, 100000
-lacoD:  beq $24, $0, fimD
-        nop
-        nop
-        addi $24, $24, -1
-        j lacoD
-fimD:   jr $31
