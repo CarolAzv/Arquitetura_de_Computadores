@@ -1,4 +1,4 @@
-.include "porcos.asm"
+.include "porcosAlt.asm"
 
 .text
 
@@ -20,7 +20,7 @@ main:
     addi $14, $0, 107 # x final. max 127 #0x10014780
     addi $15, $0, 45  # y final. max 63
 
-guardar cenario e nota na memoria
+#guardar cenario e nota na memoria
     add $16, $0, $7 # conf do endereco
     add $17, $0, $16
     sll $17, $17, 2
@@ -51,14 +51,6 @@ PorcoHat:
         add $15, $15, $11
         add $15, $15, $12 # posicao inicial a ser desenhada
         add $13, $0, $9 # largura 
-
-carregar cenario
-    lui $17,0x1001
-    addi $18,$0,$7
-    sll $18,$18,2 # multiplica por 4
-    addi $18,$18,$17
-    addi $16,$0,0
-    jal load
 store:
     lw $19,0($17)
     sw $19,0($18)
@@ -67,5 +59,3 @@ store:
     addi $16,$16,-1
     bne $16,0,store
     jr $31
-
-load:
