@@ -155,9 +155,11 @@ delay_up_loop:
 	sw $9, porco
 	
 	#problema: o loop para quando bate aqui, descibrir como fazer isso ser iguinorado
+	#lw $29, 0($26)
+        #beq $29, $0, porco_loop
     	#lw $27, 4($26)
         #addi $28, $0, 'x'
-        #beq $27, $28, game_end
+        #ssssbeq $27, $28, game_end
 	
 	j porco_loop
 	
